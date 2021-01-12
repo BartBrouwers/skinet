@@ -18,8 +18,7 @@ namespace API
             {
                 var services = scope.ServiceProvider;
                 var loggerFactory = services.GetRequiredService<ILoggerFactory>();
-                
-                try
+                try 
                 {
                     var context = services.GetRequiredService<StoreContext>();
                     await context.Database.MigrateAsync();
@@ -28,10 +27,10 @@ namespace API
                 catch (Exception ex)
                 {
                     var logger = loggerFactory.CreateLogger<Program>();
-                    logger.LogError(ex, "An error occured during migartion");
+                    logger.LogError(ex, "An error occured during migration");
                 }
             }
-            
+
             host.Run();
         }
 
